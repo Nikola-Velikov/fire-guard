@@ -1,16 +1,6 @@
 import 'reflect-metadata';
 import { NestFactory } from '@nestjs/core';
-// Prefer built dist on Vercel; fallback to src for local dev
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { AppModule } = (() => {
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    return require('../dist/app/app.module');
-  } catch {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    return require('../src/app/app.module');
-  }
-})();
+import { AppModule } from '../src/app/app.module';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import express, { Request, Response } from 'express';
 import { ValidationPipe } from '@nestjs/common';
@@ -66,3 +56,4 @@ export default async function handler(req: Request, res: Response) {
   server = server || (await ready);
   return (server as any)(req, res);
 }
+

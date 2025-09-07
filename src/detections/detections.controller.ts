@@ -84,7 +84,7 @@ export class DetectionsController {
     }
 
     const stored = await this.storage.save('fires', (file as any).buffer, file.originalname, (file as any).mimetype);
-    const saved = await this.detectionsService.create(stored.filename, body.lat, body.lon, stored.url);
+    const saved = await this.detectionsService.create(stored.filename, body.lat, body.lon);
     const result: FireReportDto & { url: string } = {
       id: String(saved._id),
       filename: saved.filename,
@@ -107,7 +107,7 @@ export class DetectionsController {
       lat: d.latitude,
       lon: d.longitude,
       createdAt: d.createdAt,
-      url: d.fileUrl || `/uploads/fires/${d.filename}`,
+      url: `/uploads/fires/${d.filename}`,
     }));
   }
 }

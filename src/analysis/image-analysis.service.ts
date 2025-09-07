@@ -68,8 +68,8 @@ export class ImageAnalysisService {
 
   async imageShowsVolunteerCertificate(filePath: string): Promise<boolean> {
     const prompt = [
-      'You are a strict document classifier. Answer strictly with one word: YES or NO.',
-      'Question: Is this image a valid-looking volunteer certificate related to firefighting or fire service (e.g., official certificate, ID card, or training completion document), with clear text or seals indicating volunteer fire service)?',
+      'You are a document classifier. Answer strictly with one word: YES or NO.',
+      'Question: Is this image certificate related  fire service, with clear text or seals indicating fire service?',
     ].join('\n');
     return this.imageIsRelevant(filePath, prompt);
   }
@@ -85,7 +85,7 @@ export class ImageAnalysisService {
   async imageBufferShowsVolunteerCertificate(buf: Buffer, mime?: string): Promise<boolean> {
     const prompt = [
       'You are a strict document classifier. Answer strictly with one word: YES or NO.',
-      'Question: Is this image a valid-looking volunteer certificate related to firefighting or fire service (e.g., official certificate, ID card, or training completion document), with clear text or seals indicating volunteer fire service)?',
+      'Question: Is this image a valid-looking  certificate related  to fire service , with clear text or seals indicating  fire service)?',
     ].join('\n');
     return this.bufferIsRelevant(buf, prompt, mime);
   }

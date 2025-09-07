@@ -8,9 +8,6 @@ export class FireReport {
   @Prop({ required: true })
   filename: string;
 
-  @Prop({ required: false })
-  fileUrl?: string;
-
   @Prop({ required: true, type: Number, min: -90, max: 90 })
   latitude: number;
 

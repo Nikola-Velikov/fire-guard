@@ -10,8 +10,8 @@ export class DetectionsService {
     private readonly fireReportModel: Model<FireReportDocument>,
   ) {}
 
-  async create(filename: string, latitude: number, longitude: number, fileUrl?: string) {
-    const created = await this.fireReportModel.create({ filename, latitude, longitude, fileUrl });
+  async create(filename: string, latitude: number, longitude: number) {
+    const created = await this.fireReportModel.create({ filename, latitude, longitude });
     return created;
   }
 
